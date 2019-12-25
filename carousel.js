@@ -3,14 +3,23 @@
 jQuery(document).ready(function () {
   setInterval(function () {
         nextSlide();
-    }, 7000);
+    }, 6000);
 });
+
+
  function nextSlide() {
+   if ($(".dot").last().hasClass("active-dot")) {
+     $(".dot").first().addClass("active-dot");
+     $(".dot").last().removeClass("active-dot");
+   }else {
+     $(".active-dot").next().addClass("active-dot");
+     $(".active-dot").prev().removeClass("active-dot");
 
-   var length = $(".slide").last().css("margin-left");
-   if (length === "0px") {
-     $(".l-slide").prevAll().appendTo(".slides");
+   };
 
+   var length = $(".slide").eq(5).css("margin-left");
+   if (length === "-1200px") {
+     $(".slides").children().not(".l-slide").not(".active").not(".r-slide").appendTo(".slides");
    };
 
    $(".active").addClass("l-slide");
@@ -26,6 +35,14 @@ $(".next-btn").click(nextSlide);
 
 
 function prevSlide() {
+  if ($(".dot").first().hasClass("active-dot")) {
+    $(".dot").last().addClass("active-dot");
+    $(".dot").first().removeClass("active-dot");
+  }else {
+    $(".active-dot").prev().addClass("active-dot");
+    $(".active-dot").next().removeClass("active-dot");
+
+  };
   var length = $(".slide").first().css("margin-left");
   if (length === "-1200px") {
     $(".r-slide").nextAll().prependTo(".slides");
@@ -36,5 +53,6 @@ function prevSlide() {
   $(".r-slide").prev().removeClass("l-slide");
   $(".r-slide").removeClass("active");
   $(".r-slide").next().removeClass("r-slide");
+
 };
 $(".pre-btn").click(prevSlide);

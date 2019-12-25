@@ -90,12 +90,12 @@ header , footer {
 .next-btn p,
 .pre-btn p {
   font-size: 5.5rem;
-  color: red;
+  color: #730099;
   cursor: pointer;
   &:hover{
     opacity:.5;
 
-  }
+  };
 }
 
 .slide img {
@@ -105,4 +105,31 @@ header , footer {
 
 .active p {
   height: 170px;
+}
+
+.slide-num {
+  text-align: center;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+span {
+  font-size: 20px;
+}
+
+.dot {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: grey;
+  opacity: .8;
+  margin-right: 5px;
+  transition: all 1s;
+
+}
+
+.active-dot {
+  background-color: #730099;
+  opacity: 1;
 }
